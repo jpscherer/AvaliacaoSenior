@@ -1,0 +1,6 @@
+package dataLayer;
+
+public interface Entity {
+	public String getFilePath();
+	public Object getFromLine();
+}

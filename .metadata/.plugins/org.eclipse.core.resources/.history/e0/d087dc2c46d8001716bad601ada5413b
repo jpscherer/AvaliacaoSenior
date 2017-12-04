@@ -1,0 +1,18 @@
+package businessLayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import componentLayer.CSVReader;
+import componentLayer.Filter;
+import dataLayer.City;
+
+public class CityHandler {
+	
+	private List<Filter> filters;
+	
+	public void ReadAll() {
+		CSVReader reader = new CSVReader();
+		List<City> teste = reader.<City>Read(new ArrayList<Filter>(), new City());
+	}
+}

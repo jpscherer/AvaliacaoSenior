@@ -1,0 +1,10 @@
+package dataLayer;
+
+import java.util.Map;
+
+public interface Entity {
+	public String getFilePath();
+	public Object getFromLine(String pLine, Map<String, Integer> pHeadersIndex);
+	public String getToLine(Object pItem);
+	public String getFileHeader();
+}

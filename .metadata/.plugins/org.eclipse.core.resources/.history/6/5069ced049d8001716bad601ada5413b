@@ -1,0 +1,17 @@
+package executer;
+
+import businessLayer.CityHandler;
+
+public class Test {
+
+	public static void main(String[] args) {
+		System.out.println("Start");
+		
+		CityHandler handler = new CityHandler();
+		System.out.println("Instanced");
+		handler.ReadAll();
+		
+		System.out.println("Finish");
+	}
+
+}

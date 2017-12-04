@@ -1,0 +1,43 @@
+package businessLayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import componentLayer.CSVReader;
+import componentLayer.Filter;
+import dataLayer.CSVDocumentModelCity;
+import dataLayer.City;
+
+public class CityHandler {
+	
+	private List<Filter> filters;
+	private CSVReader reader = new CSVReader();
+	
+	public List<City> ReadAll() {
+		return reader.<City>Read(new ArrayList<Filter>(), new City());
+	}
+	
+	public List<City> ReadAllCapitals(){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.CAPITAL, true));
+		List<City> returner = reader.<City>Read(filters, new City());
+		
+		returner.sort((City c1, City c2) -> c1.getName().compareTo(c2.getName()));
+		
+		return returner;
+	}
+	
+	public List<City> ReadByIBGEId(Integer pIBGEId){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.IBGE_ID, pIBGEId));
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner;
+	}
+	
+	public List<City> ReadByState(){
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner;
+	}
+}

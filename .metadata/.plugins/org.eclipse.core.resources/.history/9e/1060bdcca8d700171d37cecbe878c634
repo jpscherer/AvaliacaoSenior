@@ -1,0 +1,14 @@
+package DataLayer;
+
+public class City {
+	private Integer ibge_id;
+	private String uf;
+	private String name;
+	private Boolean capital;
+	private long lon;
+	private long lat;
+	private String no_accents;
+	private String alternative_names;
+	private String microregion;
+	private String mesoregion;
+}

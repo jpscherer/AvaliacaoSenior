@@ -1,0 +1,11 @@
+package businessLayer;
+
+import componentLayer.CSVReader;
+import dataLayer.City;
+
+public class CityHandler {
+	
+	public void ReadAll() {
+		CSVReader reader = new CSVReader();
+	}
+}

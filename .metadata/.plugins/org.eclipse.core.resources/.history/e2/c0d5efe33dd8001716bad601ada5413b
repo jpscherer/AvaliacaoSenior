@@ -1,0 +1,125 @@
+package componentLayer;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import dataLayer.CSVDocumentModel;
+import dataLayer.City;
+
+public class CSVReader {
+    private Map<String, Integer> headersIndex;
+	
+	public List<City> Read(List<Filter> pFilter) {
+		
+		List<City> bufferedList = new ArrayList<>();
+		
+		try{
+		    String currentLine = "";
+		    
+		    int auxCounter = 0;
+		    BufferedReader reader = new BufferedReader(new FileReader(""));
+		    while ((currentLine = reader.readLine()) != null)
+		    {
+		    	//To refresh the headers indexes
+		    	if(auxCounter == 0) {
+		    		refreshHeaderIndexes(currentLine);
+		    		auxCounter++;
+		    		continue;
+		    	}
+		    	
+		    	//If there are not filter or the row is OK with the filters
+		    	if(pFilter.size() == 0 || rowFiltered(currentLine, pFilter)) {
+		    		bufferedList.add(City.getFromLine());
+		    	}
+		    	auxCounter++;
+		    }
+		    
+		    reader.close();
+		}
+		catch(Exception ex){ }
+		finally { return bufferedList; }
+	}
+	
+	private int indexCounter;
+	private void refreshHeaderIndexes(String pHeader){
+		indexCounter = 0;
+		for(String item : pHeader.split(CSVDocumentModel.COMMA_DELIMITER)) {			
+			headersIndex.put(item, indexCounter);
+			indexCounter++;
+		}
+	}
+	
+	private Boolean rowFiltered(String pToFilter, List<Filter> pFilters) {
+		
+		Boolean filtered = true;
+		for(Filter filter : pFilters) {
+			
+			//Separates every column from my line
+			String[] items = pToFilter.split(CSVDocumentModel.COMMA_DELIMITER);
+			
+			//get the index from the header by the column from filter.
+			Integer indexColumnToFilter = headersIndex.get(filter.getColumn());
+			
+			//Filter the column from my line with the same index from the filter column header
+			//if some column is not filtered, the entire line is consider not filtered
+			if(!items[indexColumnToFilter].equals(filter.getValue()))
+				filtered = false;
+		}
+		
+		return filtered;
+	}
+
+
+    //CSV file header
+	private static final String FILE_HEADER = "id,firstName,lastName,gender,age";
+	
+	public static void writeCsvFile(String fileName) {
+		City student1 = new City();
+		City student2 = new City();
+		City student3 = new City();
+		City student4 = new City();
+		City student5 = new City();
+		City student6 = new City();
+        
+        //Create a new list of student objects
+		List<City> students = new ArrayList();
+        students.add(student1);	
+        students.add(student2);
+        students.add(student3);
+        students.add(student4);
+        students.add(student5);
+        students.add(student6);
+        FileWriter fileWriter = null;
+        
+        try {
+            fileWriter = new FileWriter(fileName);
+            //Write the CSV file header
+            fileWriter.append(FILE_HEADER.toString());
+            //Add a new line separator after the header
+            fileWriter.append(CSVDocumentModel.NEW_LINE_SEPARATOR);
+            //Write a new student object list to the CSV file
+            for (City student : students) {
+                fileWriter.append(String.valueOf(student.getName()));
+                fileWriter.append(CSVDocumentModel.COMMA_DELIMITER);
+                fileWriter.append(student.getMesoregion());
+                fileWriter.append(CSVDocumentModel.NEW_LINE_SEPARATOR);
+            }
+            System.out.println("CSV file was created successfully !!!");
+        } catch (Exception e) {
+            System.out.println("Error in CsvFileWriter !!!");
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+            }
+        }
+    }
+}

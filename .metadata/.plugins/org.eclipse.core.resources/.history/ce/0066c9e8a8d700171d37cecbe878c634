@@ -1,0 +1,20 @@
+package DataLayer;
+
+public class City {
+	private Integer ibge_id;
+	private String uf;
+	private String name;
+	private Boolean capital;
+	private long lon;
+	private long lat;
+	private String no_accents;
+	private String alternative_names;
+	private String microregion;
+	private String mesoregion;
+	public Integer getIbge_id() {
+		return ibge_id;
+	}
+	public void setIbge_id(Integer ibge_id) {
+		this.ibge_id = ibge_id;
+	}
+}
