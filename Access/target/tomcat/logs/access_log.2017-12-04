@@ -1,0 +1,16 @@
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:21:14 -0200] "GET /Access/ HTTP/1.1" 200 91 http-bio-8080-exec-1 920
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:21:29 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-2 216
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:24:57 -0200] "GET / HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:25:41 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-5 10
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:25:44 -0200] "GET /Access/cities HTTP/1.1" 404 977 http-bio-8080-exec-6 5
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:25:51 -0200] "GET /Access/cities/getAll HTTP/1.1" 404 991 http-bio-8080-exec-7 2
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:30:45 -0200] "GET /Webcomunicator/cities HTTP/1.1" 404 - http-bio-8080-exec-10 0
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:30:52 -0200] "GET /Access/cities HTTP/1.1" 404 977 http-bio-8080-exec-10 2
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:30:56 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-10 9
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:31:03 -0200] "GET /Access/cities HTTP/1.1" 404 977 http-bio-8080-exec-10 2
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:34:54 -0200] "GET /cities HTTP/1.1" 404 - http-bio-8080-exec-7 0
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:34:58 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-7 10
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:35:02 -0200] "GET / HTTP/1.1" 404 - http-bio-8080-exec-7 0
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:35:09 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-7 6
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:40:37 -0200] "GET /Access/cities HTTP/1.1" 404 977 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [04/Dec/2017:19:56:45 -0200] "GET /Access/ HTTP/1.1" 200 90 http-bio-8080-exec-10 15

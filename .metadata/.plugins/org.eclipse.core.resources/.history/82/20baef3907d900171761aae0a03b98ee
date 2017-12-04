@@ -1,0 +1,10 @@
+package accessLayer;
+
+public class Services {
+	
+	@path("")
+	@get("")
+	public void teste() {
+		
+	}
+}

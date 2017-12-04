@@ -1,0 +1,13 @@
+package accessLayer;
+
+//import javax.ws.rs.GET;
+
+
+public class Services {
+	
+	@Path("")
+	@GET("")
+	public void teste() {
+		
+	}
+}

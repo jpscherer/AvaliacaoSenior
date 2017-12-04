@@ -9,8 +9,8 @@ public class City implements Entity {
 	private String uf;
 	private String name;
 	private Boolean capital;
-	private long lon;
-	private long lat;
+	private Double lon;
+	private Double lat;
 	private String no_accents;
 	private String alternative_names;
 	private String microregion;
@@ -40,11 +40,11 @@ public class City implements Entity {
 		this.capital = capital;
 	}
 
-	public long getLon() {
+	public Double getLon() {
 		return lon;
 	}
 
-	public void setLon(long lon) {
+	public void setLon(Double lon) {
 		this.lon = lon;
 	}
 
@@ -56,11 +56,11 @@ public class City implements Entity {
 		this.uf = uf;
 	}
 
-	public long getLat() {
+	public Double getLat() {
 		return lat;
 	}
 
-	public void setLat(long lat) {
+	public void setLat(Double lat) {
 		this.lat = lat;
 	}
 

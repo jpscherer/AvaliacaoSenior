@@ -1,0 +1,239 @@
+package businessLayer;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.*;
+
+import componentLayer.CSVComponent;
+import componentLayer.Filter;
+import dataLayer.CSVDocumentModelCity;
+import dataLayer.City;
+
+public class CityHandler {
+	
+	private List<Filter> filters;
+	private CSVComponent reader = new CSVComponent();
+	
+	public List<City> ReadAll() {
+		filters = new ArrayList<Filter>();
+		return reader.<City>Read(filters, new City());
+	}
+	
+	public List<City> ReadAllCapitals(){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.CAPITAL, true));
+		List<City> returner = reader.<City>Read(filters, new City());
+		
+		returner.sort((City c1, City c2) -> c1.getName().compareTo(c2.getName()));
+		
+		return returner;
+	}
+	
+	public City ReadByIBGEId(Integer pIBGEId){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.IBGE_ID, pIBGEId));
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner.get(0);
+	}
+	
+	public List<City> ReadByState(String pStateUF){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.UF, pStateUF));
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner;
+	}
+
+	public int TotalRecords(){
+		filters = new ArrayList<Filter>();
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner.size();
+	}
+	
+	public HashMap<String, Integer> CountByState(){		
+		HashMap<String, Integer> count = new HashMap<String, Integer>();
+		for(City record : this.ReadAll()) {
+			Integer qtd = count.get(record.getUf()).intValue();
+			count.put(record.getUf(), qtd++);
+		}
+		return count;
+	}
+	
+	public String StateWithLowerQtdOfCities() {
+		Map<String, Integer> counted = this.CountByState();
+		
+		int qtdAux = Integer.MAX_VALUE;
+		String lower = "";
+		for(Map.Entry<String,Integer> e : counted.entrySet()) {
+			if(e.getValue() < qtdAux) {
+				lower = e.getKey();
+				qtdAux = e.getValue();
+			}
+		}
+		return lower;
+	}
+	
+	public String StateWithHigherQtdOfCities() {
+		Map<String, Integer> counted = this.CountByState();
+		
+		int qtdAux = Integer.MIN_VALUE;
+		String higher = "";
+		for(Map.Entry<String,Integer> e : counted.entrySet()) {
+			if(e.getValue() > qtdAux) {
+				higher = e.getKey();
+				qtdAux = e.getValue();
+			}
+		}
+		return higher;
+	}
+	
+	public List<City> filterByColumn(){
+		List<City> list = new ArrayList() {
+			
+			@Override
+			public <T> T[] toArray(T[] a) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Object[] toArray() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public List<City> subList(int fromIndex, int toIndex) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public int size() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			
+			@Override
+			public City set(int index, City element) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean retainAll(Collection<?> c) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public boolean removeAll(Collection<?> c) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public City remove(int index) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean remove(Object o) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public ListIterator<City> listIterator(int index) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public ListIterator<City> listIterator() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public int lastIndexOf(Object o) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			
+			@Override
+			public Iterator<City> iterator() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean isEmpty() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public int indexOf(Object o) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+			
+			@Override
+			public City get(int index) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean containsAll(Collection<?> c) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public boolean contains(Object o) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public void clear() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public boolean addAll(int index, Collection<? extends City> c) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public boolean addAll(Collection<? extends City> c) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public void add(int index, City element) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public boolean add(City arg0) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
+	}
+}

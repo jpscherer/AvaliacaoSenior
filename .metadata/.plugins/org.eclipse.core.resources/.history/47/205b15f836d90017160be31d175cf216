@@ -1,0 +1,16 @@
+package services;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+import accessLayer.Services;
+
+@Path("/cities")
+public class WebRequester {
+	@GET()
+	public Response getAll() {
+		Services svc = new Services();
+		return Response.status(200).entity(svc.getAll()).build();
+	}
+}

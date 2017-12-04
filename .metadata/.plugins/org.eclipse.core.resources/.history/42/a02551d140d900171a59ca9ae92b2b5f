@@ -1,0 +1,65 @@
+package businessLayer;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.*;
+
+import componentLayer.CSVComponent;
+import componentLayer.Filter;
+import dataLayer.CSVDocumentModelCity;
+import dataLayer.City;
+
+public class CityHandler {
+	
+	private List<Filter> filters;
+	private CSVComponent reader = new CSVComponent();
+	
+	public List<City> ReadAll() {
+		filters = new ArrayList<Filter>();
+		return reader.<City>Read(filters, new City());
+	}
+	
+	public List<City> ReadAllCapitals(){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.CAPITAL, true));
+		List<City> returner = reader.<City>Read(filters, new City());
+		
+		returner.sort((City c1, City c2) -> c1.getName().compareTo(c2.getName()));
+		
+		return returner;
+	}
+	
+	public City ReadByIBGEId(Integer pIBGEId){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.IBGE_ID, pIBGEId));
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner.get(0);
+	}
+	
+	public List<City> ReadByState(String pStateUF){
+		filters = new ArrayList<Filter>();
+		filters.add(new Filter(CSVDocumentModelCity.UF, pStateUF));
+		
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner;
+	}
+
+	public int TotalRecords(){
+		filters = new ArrayList<Filter>();
+		List<City> returner = reader.<City>Read(filters, new City());
+		return returner.size();
+	}
+	
+	public void CountByState(){
+		Map<City, Double> counted = this.ReadAll().stream().collect(Collectors.groupingBy(
+				city -> city,
+				Collectors.summingDouble(it -> it.getUf())
+				));
+		
+		Map<Object, Integer> counted2 = this.ReadAll().stream().collect(Collectors.groupingBy(city -> city.getUf(),
+				Collectors.summingInt(o -> o)));
+	}
+}

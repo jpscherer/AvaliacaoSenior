@@ -1,7 +1,14 @@
 package businessLayer;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.*;
 
 import componentLayer.CSVComponent;
 import componentLayer.Filter;
@@ -28,12 +35,12 @@ public class CityHandler {
 		return returner;
 	}
 	
-	public List<City> ReadByIBGEId(Integer pIBGEId){
+	public City ReadByIBGEId(Integer pIBGEId){
 		filters = new ArrayList<Filter>();
 		filters.add(new Filter(CSVDocumentModelCity.IBGE_ID, pIBGEId));
 		
 		List<City> returner = reader.<City>Read(filters, new City());
-		return returner;
+		return returner.get(0);
 	}
 	
 	public List<City> ReadByState(String pStateUF){
@@ -48,5 +55,97 @@ public class CityHandler {
 		filters = new ArrayList<Filter>();
 		List<City> returner = reader.<City>Read(filters, new City());
 		return returner.size();
+	}
+	
+	public HashMap<String, Integer> CountByState(){		
+		HashMap<String, Integer> count = new HashMap<String, Integer>();
+		for(City record : this.ReadAll()) {
+			Integer qtd = count.get(record.getUf()).intValue();
+			count.put(record.getUf(), qtd++);
+		}
+		return count;
+	}
+	
+	public String StateWithLowerQtdOfCities() {
+		Map<String, Integer> counted = this.CountByState();
+		
+		int qtdAux = Integer.MAX_VALUE;
+		String lower = "";
+		for(Map.Entry<String,Integer> e : counted.entrySet()) {
+			if(e.getValue() < qtdAux) {
+				lower = e.getKey();
+				qtdAux = e.getValue();
+			}
+		}
+		return lower;
+	}
+	
+	public String StateWithHigherQtdOfCities() {
+		Map<String, Integer> counted = this.CountByState();
+		
+		int qtdAux = Integer.MIN_VALUE;
+		String higher = "";
+		for(Map.Entry<String,Integer> e : counted.entrySet()) {
+			if(e.getValue() > qtdAux) {
+				higher = e.getKey();
+				qtdAux = e.getValue();
+			}
+		}
+		return higher;
+	}
+	
+	public List<City> HigherDistance(){
+		List<City> returner = new ArrayList();
+		
+		Double difLonAux = 0D;
+		Double difLatAux = 0D;
+		Double sumAux = 0D;
+		
+		for(City recordLoop1 : this.ReadAll()) {
+			for(City recordLoop2 : this.ReadAll()) {
+				
+				
+				if((recordLoop1.getLon() > 0 && recordLoop2.getLon() > 0) ||
+						(recordLoop1.getLon() < 0 && recordLoop2.getLon() < 0)) {
+					difLonAux = (recordLoop1.getLon() * (+1)) - (recordLoop2.getLon() * (+1)); 
+				} else
+					difLonAux = (recordLoop1.getLon() - recordLoop2.getLon());
+				
+				
+				
+				if((recordLoop1.getLat() > 0 && recordLoop2.getLat() > 0) ||
+						(recordLoop1.getLat() < 0 && recordLoop2.getLat() < 0)) {
+					difLatAux = (recordLoop1.getLat() * (+1)) - (recordLoop2.getLat() * (+1)); 
+				} else
+					difLatAux = (recordLoop1.getLat() - recordLoop2.getLat());
+				
+				
+				Double dif = (difLonAux + difLatAux);  
+				if(dif > sumAux) {
+					sumAux = dif;
+					returner.clear();
+					returner.add(recordLoop1);
+					returner.add(recordLoop2);
+				}
+			}
+		}
+		return returner;
+	}
+	
+	public void Delete(Integer pIdIBGE) {
+		List<City> bufferedList = this.ReadAll();
+		City toDelete = this.ReadByIBGEId(pIdIBGE);
+		
+		bufferedList.remove(toDelete);
+		//SaveBufferedList()
+	}
+	
+	public void Update(City pToUpdate) {
+		List<City> bufferedList = this.ReadAll();
+		City recordBeforeUpdated = this.ReadByIBGEId(pToUpdate.getIbge_id());
+		
+		bufferedList.add(recordBeforeUpdated);
+		bufferedList.remove(recordBeforeUpdated);
+		//SaveBufferedList()
 	}
 }

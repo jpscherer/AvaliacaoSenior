@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import dataLayer.CSVDocumentModel;
-import dataLayer.City;
 import dataLayer.Entity;
 
 public class CSVComponent {

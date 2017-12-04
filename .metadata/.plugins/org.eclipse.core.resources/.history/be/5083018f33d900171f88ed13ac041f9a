@@ -1,0 +1,20 @@
+package accessLayer;
+
+import java.util.List;
+
+import businessLayer.CityHandler;
+import dataLayer.City;
+
+//import javax.ws.rs.GET;
+
+public class Services {
+	CityHandler handler = new CityHandler();
+	
+	public List<City> getAll(){
+		return handler.ReadAll();
+	}
+	
+	/*public List<City> getByIBGEId(Integer pId){
+		return handler
+	}*/
+}
