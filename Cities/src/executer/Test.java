@@ -12,14 +12,18 @@ public class Test {
 		CityHandler handler = new CityHandler();		
 	
 		System.out.println("Instanced");
-		/*
-		List<City> lista = handler.ReadAll();
+		
+		/*List<City> lista = handler.ReadAll();
 		for(City a : lista){
-			System.out.println(a.getName());
+			System.out.println(a.getIbge_id());
 		}*/
 		
-		/*City city = handler.ReadByIBGEId(1500305);
+		/*City city = handler.ReadByIBGEId(1400407);
 		System.out.println(city.getUf());*/
+		
+		//System.out.println(handler.StateWithHigherQtdOfCities());
+		//System.out.println(handler.StateWithLowerQtdOfCities());
+		handler.HigherDistance();
 		
 		System.out.println("Finish");
 	}

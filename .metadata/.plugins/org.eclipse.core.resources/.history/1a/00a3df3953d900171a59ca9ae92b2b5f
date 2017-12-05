@@ -1,0 +1,16 @@
+package src.main.java;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+@Path("/cities")
+public class WebComunicator {
+	
+	@GET()
+	@Produces("application/json")
+	public String getAll() {
+		return "Jean";
+		//return Response.status(200).entity("Jean").build();
+	}
+}

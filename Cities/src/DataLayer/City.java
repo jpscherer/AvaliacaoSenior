@@ -98,6 +98,7 @@ public class City implements Entity {
 
 	@Override
 	public City getFromLine(String pLine, Map<String, Integer> pHeadersIndex) {
+		City returner = new City();
 		try {
 			String[] columns = pLine.split(CSVDocumentModelCity.COMMA_DELIMITER);
 			for (Field field : this.getClass().getDeclaredFields()) {
@@ -105,18 +106,20 @@ public class City implements Entity {
 				int index = pHeadersIndex.get(field.getName());
 
 				if (field.getType().equals(String.class))
-					field.set(this, (String) columns[index]);
+					field.set(returner, (String) columns[index]);
 				else if (field.getType().equals(Integer.class))
-					field.set(this, Integer.getInteger(columns[index]));
+					field.set(returner, Integer.getInteger(columns[index]));
+				else if (field.getType().equals(Double.class))
+					field.set(returner, Double.parseDouble(columns[index]));
 				else if (field.getType().equals(Boolean.class))
-					field.set(this, Boolean.getBoolean(columns[index]));
+					field.set(returner, Boolean.getBoolean(columns[index]));
 
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 
-		return this;
+		return returner;
 	}
 
 	@Override
@@ -131,15 +134,39 @@ public class City implements Entity {
 
 	@Override
 	public String getToLine(Object pRecord) {
+		City record = (City)pRecord;
 		StringBuilder sb = new StringBuilder();
-
-		/*
-		 * fileWriter.append(String.valueOf(city.getName()));
-		 * fileWriter.append(CSVDocumentModel.COMMA_DELIMITER);
-		 * fileWriter.append(record.getMesoregion());
-		 * fileWriter.append(CSVDocumentModel.NEW_LINE_SEPARATOR);
-		 */
-
+		
+		sb.append(String.valueOf(record.getIbge_id()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getUf()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getName()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getCapital()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getLon()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getLat()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getNo_accents()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getAlternative_names()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getMicroregion()));
+		sb.append(CSVDocumentModel.COMMA_DELIMITER);
+		
+		sb.append(String.valueOf(record.getMesoregion()));		
+		sb.append(CSVDocumentModel.NEW_LINE_SEPARATOR);
+		
 		return sb.toString();
 	}
 }

@@ -59,15 +59,24 @@ public class CityHandler {
 	
 	public HashMap<String, Integer> CountByState(){		
 		HashMap<String, Integer> count = new HashMap<String, Integer>();
+		
+		Integer qtd = 0;
 		for(City record : this.ReadAll()) {
-			Integer qtd = count.get(record.getUf()).intValue();
-			count.put(record.getUf(), qtd++);
+			
+			if(count.get(record.getUf()) != null) {
+				qtd = count.get(record.getUf()).intValue();
+			} else {
+				qtd = 0;
+			}
+			
+			qtd++;
+			count.put(record.getUf(), qtd);
 		}
 		return count;
 	}
 	
 	public String StateWithLowerQtdOfCities() {
-		Map<String, Integer> counted = this.CountByState();
+		HashMap<String, Integer> counted = this.CountByState();
 		
 		int qtdAux = Integer.MAX_VALUE;
 		String lower = "";
@@ -81,7 +90,7 @@ public class CityHandler {
 	}
 	
 	public String StateWithHigherQtdOfCities() {
-		Map<String, Integer> counted = this.CountByState();
+		HashMap<String, Integer> counted = this.CountByState();
 		
 		int qtdAux = Integer.MIN_VALUE;
 		String higher = "";
@@ -137,7 +146,7 @@ public class CityHandler {
 		City toDelete = this.ReadByIBGEId(pIdIBGE);
 		
 		bufferedList.remove(toDelete);
-		//SaveBufferedList()
+		CSVComponent.<City>Write(bufferedList, new City());
 	}
 	
 	public void Update(City pToUpdate) {
@@ -146,6 +155,6 @@ public class CityHandler {
 		
 		bufferedList.add(recordBeforeUpdated);
 		bufferedList.remove(recordBeforeUpdated);
-		//SaveBufferedList()
+		CSVComponent.<City>Write(bufferedList, new City());
 	}
 }
