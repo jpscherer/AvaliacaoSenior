@@ -13,7 +13,8 @@ public class Test {
 	
 		System.out.println("Instanced");
 		
-		List<City> lista = handler.ReadAll();
+		List<City> lista = handler.ReadAllCapitals();
+		//List<City> lista = handler.ReadAll();
 		//List<City> lista = handler.HigherDistance();
 		for(City a : lista){
 			System.out.println(a.toString());
