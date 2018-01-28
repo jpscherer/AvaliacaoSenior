@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="executer.Test"/>
 <fullyQualifiedTypeName name="businessLayer.CityHandler"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="dataLayer.City"/>
 <fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
 <fullyQualifiedTypeName name="accessLayer.Services"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
@@ -31,4 +30,5 @@
 <fullyQualifiedTypeName name="javax.ws.rs.ApplicationPath"/>
 <fullyQualifiedTypeName name="src.main.java.WebComunicator"/>
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="dataLayer.City"/>
 </qualifiedTypeNameHistroy>

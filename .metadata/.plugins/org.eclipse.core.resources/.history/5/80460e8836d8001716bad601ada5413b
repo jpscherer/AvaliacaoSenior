@@ -1,9 +1,0 @@
-package componentLayer;
-
-public class Filter {
-	private String column;
-	private Object value;
-
-	
-	
-}

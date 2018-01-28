@@ -1,9 +1,0 @@
-package executer;
-
-public class Test {
-
-	public static void main(String[] args) {
-		CityHandler handler = new Test();
-	}
-
-}

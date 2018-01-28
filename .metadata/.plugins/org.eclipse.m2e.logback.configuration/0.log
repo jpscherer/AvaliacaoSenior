@@ -1363,3 +1363,19 @@ org.eclipse.jdt.core.JavaModelException: target/classes/services [in Access] is 
 2017-12-04 23:34:01,312 [Worker-105] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2017-12-04 23:34:01,318 [Worker-105] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\EMPRESAS\SENIOR\WorkSpace\Access\src\test\resources
 2017-12-04 23:34:35,316 [Worker-106] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2018-01-27 23:22:55,056 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-27 23:22:58,832 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:22:58,994 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\main\resources
+2018-01-27 23:22:58,997 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:22:59,068 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\test\resources
+2018-01-27 23:23:07,795 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: testeSenior.App:Access:0.0.1-SNAPSHOT @ C:\Projetos\AvaliacaoSenior\Access\pom.xml.
+2018-01-27 23:23:08,503 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:23:08,519 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\main\resources
+2018-01-27 23:23:08,522 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:23:08,543 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\test\resources
+2018-01-27 23:23:10,834 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: testeSenior.App:Access:0.0.1-SNAPSHOT @ C:\Projetos\AvaliacaoSenior\Access\pom.xml.
+2018-01-27 23:23:11,344 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:23:11,357 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\main\resources
+2018-01-27 23:23:11,362 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-27 23:23:11,386 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Projetos\AvaliacaoSenior\Access\src\test\resources
+2018-01-27 23:25:44,980 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
