@@ -95,6 +95,12 @@ public class City implements Entity {
 	public void setMesoregion(String mesoregion) {
 		this.mesoregion = mesoregion;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return String.format("%s - %s", getIbge_id(), getName());
+	}
 
 	@Override
 	public City getFromLine(String pLine, Map<String, Integer> pHeadersIndex) {

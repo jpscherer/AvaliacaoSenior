@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 @Path("/cities")
 public class WebComunicator {
 	
+	//Doesn't working
 	@GET
 	@Produces("application/json")
 	public String getAll() {

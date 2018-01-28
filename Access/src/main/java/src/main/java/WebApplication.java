@@ -8,6 +8,8 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/rest")
 public class WebApplication extends Application{
+	
+	//Doesn't working
 	@Override
 	public Set<Class<?>> getClasses() {	    
 	    final Set<Class<?>> classes = new HashSet<Class<?>>();

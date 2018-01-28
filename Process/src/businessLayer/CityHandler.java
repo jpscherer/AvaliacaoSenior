@@ -1,14 +1,9 @@
 package businessLayer;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.*;
 
 import componentLayer.CSVComponent;
 import componentLayer.Filter;
@@ -152,9 +147,11 @@ public class CityHandler {
 	public void Update(City pToUpdate) {
 		List<City> bufferedList = this.ReadAll();
 		City recordBeforeUpdated = this.ReadByIBGEId(pToUpdate.getIbge_id());
+		bufferedList.remove(recordBeforeUpdated);
+		
+		//
 		
 		bufferedList.add(recordBeforeUpdated);
-		bufferedList.remove(recordBeforeUpdated);
 		CSVComponent.<City>Write(bufferedList, new City());
 	}
 }

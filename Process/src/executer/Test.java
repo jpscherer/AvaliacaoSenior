@@ -14,8 +14,9 @@ public class Test {
 		System.out.println("Instanced");
 		
 		List<City> lista = handler.ReadAll();
+		//List<City> lista = handler.HigherDistance();
 		for(City a : lista){
-			System.out.println(a.getIbge_id());
+			System.out.println(a.toString());
 		}
 		
 		/*City city = handler.ReadByIBGEId(1400407);
@@ -23,7 +24,6 @@ public class Test {
 		
 		//System.out.println(handler.StateWithHigherQtdOfCities());
 		//System.out.println(handler.StateWithLowerQtdOfCities());
-		//handler.HigherDistance();
 		
 		System.out.println("Finish");
 	}
